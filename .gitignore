@@ -1,0 +1,61 @@
+#
+# backup files
+#
+*.bak
+*~
+
+
+#Don't hold onto the main grntsApp library
+grntsApp.lib
+*.stash
+
+#
+# compiled/linked/executable files
+#
+*.exe
+*.exp
+*.pdb
+*.ilk
+*.obj
+*.rc
+*.res
+*.manifest
+*.suo
+*.db
+
+
+!bin/mcpp.exe
+
+# 
+# Qt pro user files
+#
+*.pro.user*
+*.qmake.stash
+
+#
+# Qt tmp directories
+# 
+Makefile*
+lib/vs2013/
+lib/vs2017/
+grntsApp/tmp
+test/
+shapeMaker/bin
+moc_*
+
+# Eaagles description language files
+*.edl
+
+# Settings file
+*.ems
+
+# Temp files
+tmp/
+
+
+
+
+
+
+/RVO/build
+/bin/.vs/grntsApp/v15/ipch/AutoPCH/4d3bc207f3e0e94f/*.ipch
