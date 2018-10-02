@@ -22,6 +22,8 @@ grntsApp.lib
 *.manifest
 *.suo
 *.db
+ipBuild/release
+ipBuild/debug
 
 
 !bin/mcpp.exe
@@ -38,9 +40,6 @@ grntsApp.lib
 Makefile*
 lib/vs2013/
 lib/vs2017/
-grntsApp/tmp
-test/
-shapeMaker/bin
 moc_*
 
 # Eaagles description language files
@@ -51,11 +50,3 @@ moc_*
 
 # Temp files
 tmp/
-
-
-
-
-
-
-/RVO/build
-/bin/.vs/grntsApp/v15/ipch/AutoPCH/4d3bc207f3e0e94f/*.ipch

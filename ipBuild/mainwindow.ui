@@ -1,24 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow" >
-  <property name="geometry" >
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>645</width>
+    <height>555</height>
    </rect>
   </property>
-  <property name="windowTitle" >
-   <string>MainWindow</string>
+  <property name="windowTitle">
+   <string>ipBuild</string>
   </property>
-  <widget class="QMenuBar" name="menuBar" />
-  <widget class="QToolBar" name="mainToolBar" />
-  <widget class="QWidget" name="centralWidget" />
-  <widget class="QStatusBar" name="statusBar" />
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="2">
+       <widget class="QLabel" name="label_5">
+        <property name="text">
+         <string>TCP Profile Name:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3">
+       <widget class="QLineEdit" name="tcpProfileName">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="placeholderText">
+         <string>&lt;tcp_profile_name&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="3">
+       <widget class="QLineEdit" name="frontsidePort">
+        <property name="placeholderText">
+         <string>&lt;frontside_port&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Monitor:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="monitor">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="placeholderText">
+         <string>&lt;monitor_name&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>Pool:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="backsidePort">
+        <property name="placeholderText">
+         <string>&lt;backside_port&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>Backside Port:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="cbLoadBalance">
+        <property name="text">
+         <string>Load Balancing</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="pool">
+        <property name="placeholderText">
+         <string>&lt;pool&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QComboBox" name="comboBox">
+        <item>
+         <property name="text">
+          <string>Round Robin</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Ratio (member)</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Least Connections (member)</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Observed (member)</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Predictive (member)</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Ratio (node)</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Least Connections (node)</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Fastest (node)</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Observed (node)</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Predictive (node)</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Dynamic Ratio (node)</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Fastest (application)</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Least Sessions</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Dynamic Ratio (member)</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Weighted Least Connections (member)</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Weighted Least Connections (node)</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Ratio (session)</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Ratio Least Connections (member)</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Ratio Least Connections (node)</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QPlainTextEdit" name="teBacksideServers">
+        <property name="verticalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+        <property name="horizontalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+        <property name="placeholderText">
+         <string>&lt;XXX.XXX.XXX:XXXX&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <widget class="QLabel" name="label_6">
+        <property name="text">
+         <string>HTTP Profile Name:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="3">
+       <widget class="QLineEdit" name="httpProfileName">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="placeholderText">
+         <string>&lt;http_profile_name&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="2">
+       <widget class="QLabel" name="label_8">
+        <property name="text">
+         <string>VIP IP:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="3">
+       <widget class="QLineEdit" name="vipIP">
+        <property name="placeholderText">
+         <string>&lt;XXX.XXX.XXX.XXX&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2">
+       <widget class="QLabel" name="label_7">
+        <property name="text">
+         <string>Frontside Port:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="label_4">
+        <property name="text">
+         <string>Backside Server Members:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="checkPersist">
+        <property name="text">
+         <string>Persist Replace</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QComboBox" name="cbPersist">
+        <property name="currentIndex">
+         <number>5</number>
+        </property>
+        <item>
+         <property name="text">
+          <string>Cookie</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Destination Address Affinity</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Hash</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Microsoft Remote Desktop</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>SIP</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Source Address Affinity</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>SSL</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Universal</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="4" column="2">
+       <widget class="QLabel" name="label_9">
+        <property name="text">
+         <string>SNAT Pool:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="3">
+       <widget class="QLineEdit" name="snatPool">
+        <property name="placeholderText">
+         <string>&lt;snat_pool&gt;</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QListView" name="listView"/>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>645</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
  </widget>
- <layoutDefault spacing="6" margin="11" />
- <pixmapfunction></pixmapfunction>
+ <layoutdefault spacing="6" margin="11"/>
+ <tabstops>
+  <tabstop>monitor</tabstop>
+  <tabstop>backsidePort</tabstop>
+  <tabstop>pool</tabstop>
+  <tabstop>cbLoadBalance</tabstop>
+  <tabstop>comboBox</tabstop>
+  <tabstop>checkPersist</tabstop>
+  <tabstop>cbPersist</tabstop>
+  <tabstop>teBacksideServers</tabstop>
+  <tabstop>tcpProfileName</tabstop>
+  <tabstop>httpProfileName</tabstop>
+  <tabstop>frontsidePort</tabstop>
+  <tabstop>vipIP</tabstop>
+  <tabstop>listView</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

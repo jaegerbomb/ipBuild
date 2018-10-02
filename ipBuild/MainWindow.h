@@ -15,7 +15,11 @@ public:
    explicit MainWindow(QWidget *parent = nullptr);
    ~MainWindow();
 
+public slots:
+   void updateStringList();
+
 private:
+   QStringList stringListFromValues();
    Ui::MainWindow *ui;
 };
 
