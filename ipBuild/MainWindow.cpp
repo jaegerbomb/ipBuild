@@ -1,7 +1,10 @@
 #include "MainWindow.h"
 #include "ui_mainwindow.h"
 
+#include <iostream>
 #include <QStringListModel>
+#include <QMessageBox>
+#include <QClipboard>
 
 MainWindow::MainWindow(QWidget *parent) :
    QMainWindow(parent),
@@ -23,6 +26,59 @@ MainWindow::MainWindow(QWidget *parent) :
    connect(ui->checkPersist, SIGNAL(clicked(bool)), this, SLOT(updateStringList()));
    connect(ui->cbPersist, SIGNAL(currentTextChanged(QString)), this, SLOT(updateStringList()));
    connect(ui->snatPool, SIGNAL(textEdited(QString)), this, SLOT(updateStringList()));
+   connect(ui->pbCopyToClipboard, SIGNAL(clicked(bool)), this, SLOT(slotCopyOutputToClipboard()));
+
+   setupMappings();
+}
+
+void MainWindow::setupMappings()
+{
+   mLoadBalanceMap.clear();
+   mLoadBalanceMap.insert("Round Robin", "round-robin");
+   mLoadBalanceMap.insert("Ratio (member)", "ratio-member");
+   mLoadBalanceMap.insert("Least Connections (member)", "least-connections-member");
+   mLoadBalanceMap.insert("Observed (member)", "observed-member");
+   mLoadBalanceMap.insert("Predictive (member)", "predictive-member");
+   mLoadBalanceMap.insert("Ratio (node)", "ratio-node");
+   mLoadBalanceMap.insert("Least Connections (node)", "least-connections-node");
+   mLoadBalanceMap.insert("Fastest (node)", "fastest-node");
+   mLoadBalanceMap.insert("Observed (node)", "observed-node");
+   mLoadBalanceMap.insert("Predictive (node)", "predictive-node");
+   mLoadBalanceMap.insert("Dynamic Ratio (node)", "dynamic-ratio-node");
+   mLoadBalanceMap.insert("Fastest (application)", "fastest-app-response");
+   mLoadBalanceMap.insert("Least Sessions", "least-sessions");
+   mLoadBalanceMap.insert("Dynamic Ratio (member)", "dynamic-ratio-member");
+   mLoadBalanceMap.insert("Weighted Least Connections (member)", "weighted-least-connections-member");
+   mLoadBalanceMap.insert("Weighted Least Connections (node)", "weighted-least-connections-node");
+   mLoadBalanceMap.insert("Ratio (session)", "ratio-session");
+   mLoadBalanceMap.insert("Ratio Least Connections (member)", "ratio-least-connections-node");
+   mLoadBalanceMap.insert("Ratio Least Connections (node)", "ratio-least-connections-node");
+}
+
+void MainWindow::slotCopyOutputToClipboard()
+{
+   QApplication* app = (QApplication*)QApplication::instance();
+   QClipboard* board = app->clipboard();
+   if (board != nullptr) {
+      QItemSelectionModel* selModel = ui->listView->selectionModel();
+      QStringListModel* model = (QStringListModel*)(ui->listView->model());
+      QStringList list;
+      if (!selModel->selectedRows(0).isEmpty()) {
+         for (QModelIndex index : selModel->selectedIndexes()) {
+            list << model->data(index).toString();
+         }
+      }
+      else {
+         list = stringListFromValues();
+      }
+
+      QString final;
+      for (QString string : list) {
+         final += string + "\n";
+      }
+      board->setText(final);
+      QMessageBox::information(this, "Copy", "Output copied successfully", QMessageBox::StandardButton::Ok);
+   }
 }
 
 void MainWindow::updateStringList()
@@ -44,7 +100,7 @@ QStringList MainWindow::stringListFromValues()
    QString line2 = QString("create ltm pool %1 monitor %2 ").arg(ui->pool->text()).arg(ui->monitor->text());
    if (ui->cbLoadBalance->isChecked()) {
       // get the current string
-      QString lb = QString("load-balancing-mode %1 ").arg(ui->comboBox->currentText());
+      QString lb = QString("load-balancing-mode %1 ").arg(mLoadBalanceMap.value(ui->comboBox->currentText()));
       line2 += lb;
    }
    QStringList members = ui->teBacksideServers->toPlainText().split("\n");

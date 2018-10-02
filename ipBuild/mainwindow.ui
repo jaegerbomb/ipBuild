@@ -13,6 +13,247 @@
   <property name="windowTitle">
    <string>ipBuild</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QToolTip
+{
+     border: 1px solid #000000;
+     background-color: #212121;
+     color: #ffffff;
+     opacity: 200;
+}
+
+QWidget
+{
+	color:  rgb(255, 255, 255);
+    background-color: #212121;
+}
+QWidget::disabled
+{
+	color: #616161;
+	background-color: #212121;
+}
+
+/* Table Views*/
+/*
+QWidget:item:hover
+{
+    background-color: #414141;
+    color: #ffffff;
+}
+*/
+QWidget:item:selected
+{
+    background-color: #008b8b;
+}
+
+QMenuBar::item
+{
+    background: transparent;
+}
+QMenuBar::item:selected
+{
+    background:  #008b8b;
+    border: 1px solid #414141;
+}
+
+QMenuBar::item:pressed
+{
+    border: 1px solid #000000;
+    background-color: #414141;
+    margin-bottom:-1px;
+    padding-bottom:1px;
+}
+QAbstractItemView
+{
+    background-color:  #313131;
+}
+
+QLineEdit
+{
+    background-color: #414141;
+    padding: 1px;
+    border: none
+}
+
+QToolBar 
+{
+    border:  none
+}
+QComboBox
+{
+    selection-background-color: #414141;
+    background-color: #313131;
+	border: 1px solid #414141;
+}
+QComboBox:hover
+{
+    border: 2px solid #414141;
+}
+QComboBox:on
+{
+	background-color:  #212121;
+}
+
+QComboBox QAbstractItemView
+{
+    border: none;
+    selection-background-color:  #008b8b;
+}
+QScrollBar:horizontal 
+{
+     border: 1px solid #222222;
+     background: #212121;
+     height: 20px;
+     margin: 0px 16px 0 16px;
+}
+
+QScrollBar:vertical
+{
+     border: 1px solid #222222;
+     background: #212121;
+     width: 20px;
+     margin: 16px 0 16px 0;
+}
+
+
+QScrollBar::handle:horizontal
+{
+      background:  #414141;
+      min-height: 20px;
+      border-radius: 2px;
+}
+QScrollBar::add-line:horizontal {
+      border: 1px solid #1b1b19;
+      border-radius: 2px;
+      background:  #414141;
+      width: 14px;
+      subcontrol-position: right;
+      subcontrol-origin: margin;
+}
+
+QScrollBar::sub-line:horizontal {
+      border: 1px solid #1b1b19;
+      border-radius: 2px;
+      background: #414141;;
+      width: 14px;
+     subcontrol-position: left;
+     subcontrol-origin: margin;
+}
+
+QScrollBar::right-arrow:horizontal, QScrollBar::left-arrow:horizontal
+{
+      border: 3px solid black;
+      width: 3px;
+      height: 3px;
+      background: white;
+}
+
+QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
+{
+      background: none;
+}
+
+
+QScrollBar::handle:vertical
+{
+      background:  #414141;
+      min-height: 20px;
+      border-radius: 2px;
+}
+
+QScrollBar::add-line:vertical
+{
+      border: 1px solid #1b1b19;
+      border-radius: 2px;
+      background:  #414141;
+      height: 14px;
+      subcontrol-position: bottom;
+      subcontrol-origin: margin;
+}
+
+QScrollBar::sub-line:vertical
+{
+      border: 1px solid #222222;
+      border-radius: 2px;
+      background: #414141;;
+      height: 14px;
+      subcontrol-position: top;
+      subcontrol-origin: margin;
+}
+
+QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical
+{
+      border: 3px solid black;
+      width: 3px;
+      height: 3px;
+      background: white;
+}
+
+
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical
+{
+      background: none;
+}
+QHeaderView::section
+{
+    background-color: #313131;
+    color: white;
+    padding-left: 4px;
+    border: 1px solid #6c6c6c;
+}
+
+QDockWidget::title
+{
+    text-align: center;
+    spacing: 3px; /* spacing between items in the tool bar */
+    background-color: #313131;
+}
+
+QDockWidget::close-button, QDockWidget::float-button
+{
+    text-align: center;
+    spacing: 1px; /* spacing between items in the tool bar */
+    background-color: #505050;
+}
+QToolButton::checked
+{
+	border-style: solid;
+	border: 2px solid #008b8b;
+}
+
+QToolButton::hover
+{	
+	background: #414141;
+}
+
+QTabBar
+{
+	color: rgb(255,255,255);
+	background-color: #414141;
+}
+QPushButton::hover
+{
+	background: #008b8b;
+}
+
+QPushButton
+{
+	color: rgb(255,255,255);
+	background-color: #414141;
+}
+QPushButton::checked
+{
+    background-color: #008b8b;
+	border-style: solid;
+	border: 2px solid #ffffff;
+}
+QSpinBox
+{
+	color: #008b8b;
+}
+
+</string>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
@@ -321,7 +562,48 @@
      </layout>
     </item>
     <item>
-     <widget class="QListView" name="listView"/>
+     <widget class="QListView" name="listView">
+      <property name="selectionMode">
+       <enum>QAbstractItemView::MultiSelection</enum>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pbCopyToClipboard">
+        <property name="text">
+         <string>Copy to Clipboard</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
     </item>
    </layout>
   </widget>

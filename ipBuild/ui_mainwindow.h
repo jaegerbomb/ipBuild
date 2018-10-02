@@ -14,12 +14,15 @@
 #include <QtWidgets/QCheckBox>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QGridLayout>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QListView>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPlainTextEdit>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
@@ -55,6 +58,10 @@ public:
     QLabel *label_9;
     QLineEdit *snatPool;
     QListView *listView;
+    QHBoxLayout *horizontalLayout;
+    QSpacerItem *horizontalSpacer;
+    QPushButton *pbCopyToClipboard;
+    QSpacerItem *horizontalSpacer_2;
     QMenuBar *menuBar;
     QStatusBar *statusBar;
 
@@ -63,6 +70,249 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
         MainWindow->resize(645, 555);
+        MainWindow->setStyleSheet(QLatin1String("QToolTip\n"
+"{\n"
+"     border: 1px solid #000000;\n"
+"     background-color: #212121;\n"
+"     color: #ffffff;\n"
+"     opacity: 200;\n"
+"}\n"
+"\n"
+"QWidget\n"
+"{\n"
+"	color:  rgb(255, 255, 255);\n"
+"    background-color: #212121;\n"
+"}\n"
+"QWidget::disabled\n"
+"{\n"
+"	color: #616161;\n"
+"	background-color: #212121;\n"
+"}\n"
+"\n"
+"/* Table Views*/\n"
+"/*\n"
+"QWidget:item:hover\n"
+"{\n"
+"    background-color: #414141;\n"
+"    color: #ffffff;\n"
+"}\n"
+"*/\n"
+"QWidget:item:selected\n"
+"{\n"
+"    background-color: #008b8b;\n"
+"}\n"
+"\n"
+"QMenuBar::item\n"
+"{\n"
+"    background: transparent;\n"
+"}\n"
+"QMenuBar::item:selected\n"
+"{\n"
+"    background:  #008b8b;\n"
+"    border: 1px solid #414141;\n"
+"}\n"
+"\n"
+"QMenuBar::item:pressed\n"
+"{\n"
+"    border: 1px solid #000000;\n"
+"    background-color: #414141;\n"
+"    margin-bottom:-1px;\n"
+"    padding-bottom:1px;\n"
+"}\n"
+"QAbstractItemView\n"
+"{\n"
+"    background-color:  #313131;\n"
+"}\n"
+"\n"
+"QLineEdit\n"
+"{\n"
+"    background-color: #414141;\n"
+"    padding: 1p"
+                        "x;\n"
+"    border: none\n"
+"}\n"
+"\n"
+"QToolBar \n"
+"{\n"
+"    border:  none\n"
+"}\n"
+"QComboBox\n"
+"{\n"
+"    selection-background-color: #414141;\n"
+"    background-color: #313131;\n"
+"	border: 1px solid #414141;\n"
+"}\n"
+"QComboBox:hover\n"
+"{\n"
+"    border: 2px solid #414141;\n"
+"}\n"
+"QComboBox:on\n"
+"{\n"
+"	background-color:  #212121;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView\n"
+"{\n"
+"    border: none;\n"
+"    selection-background-color:  #008b8b;\n"
+"}\n"
+"QScrollBar:horizontal \n"
+"{\n"
+"     border: 1px solid #222222;\n"
+"     background: #212121;\n"
+"     height: 20px;\n"
+"     margin: 0px 16px 0 16px;\n"
+"}\n"
+"\n"
+"QScrollBar:vertical\n"
+"{\n"
+"     border: 1px solid #222222;\n"
+"     background: #212121;\n"
+"     width: 20px;\n"
+"     margin: 16px 0 16px 0;\n"
+"}\n"
+"\n"
+"\n"
+"QScrollBar::handle:horizontal\n"
+"{\n"
+"      background:  #414141;\n"
+"      min-height: 20px;\n"
+"      border-radius: 2px;\n"
+"}\n"
+"QScrollBar::add-line:horizontal {\n"
+"      border: 1px solid #1b1b19;\n"
+"      bord"
+                        "er-radius: 2px;\n"
+"      background:  #414141;\n"
+"      width: 14px;\n"
+"      subcontrol-position: right;\n"
+"      subcontrol-origin: margin;\n"
+"}\n"
+"\n"
+"QScrollBar::sub-line:horizontal {\n"
+"      border: 1px solid #1b1b19;\n"
+"      border-radius: 2px;\n"
+"      background: #414141;;\n"
+"      width: 14px;\n"
+"     subcontrol-position: left;\n"
+"     subcontrol-origin: margin;\n"
+"}\n"
+"\n"
+"QScrollBar::right-arrow:horizontal, QScrollBar::left-arrow:horizontal\n"
+"{\n"
+"      border: 3px solid black;\n"
+"      width: 3px;\n"
+"      height: 3px;\n"
+"      background: white;\n"
+"}\n"
+"\n"
+"QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal\n"
+"{\n"
+"      background: none;\n"
+"}\n"
+"\n"
+"\n"
+"QScrollBar::handle:vertical\n"
+"{\n"
+"      background:  #414141;\n"
+"      min-height: 20px;\n"
+"      border-radius: 2px;\n"
+"}\n"
+"\n"
+"QScrollBar::add-line:vertical\n"
+"{\n"
+"      border: 1px solid #1b1b19;\n"
+"      border-radius: 2px;\n"
+"      background:  #414141;\n"
+"      height: 14px;\n"
+""
+                        "      subcontrol-position: bottom;\n"
+"      subcontrol-origin: margin;\n"
+"}\n"
+"\n"
+"QScrollBar::sub-line:vertical\n"
+"{\n"
+"      border: 1px solid #222222;\n"
+"      border-radius: 2px;\n"
+"      background: #414141;;\n"
+"      height: 14px;\n"
+"      subcontrol-position: top;\n"
+"      subcontrol-origin: margin;\n"
+"}\n"
+"\n"
+"QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical\n"
+"{\n"
+"      border: 3px solid black;\n"
+"      width: 3px;\n"
+"      height: 3px;\n"
+"      background: white;\n"
+"}\n"
+"\n"
+"\n"
+"QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical\n"
+"{\n"
+"      background: none;\n"
+"}\n"
+"QHeaderView::section\n"
+"{\n"
+"    background-color: #313131;\n"
+"    color: white;\n"
+"    padding-left: 4px;\n"
+"    border: 1px solid #6c6c6c;\n"
+"}\n"
+"\n"
+"QDockWidget::title\n"
+"{\n"
+"    text-align: center;\n"
+"    spacing: 3px; /* spacing between items in the tool bar */\n"
+"    background-color: #313131;\n"
+"}\n"
+"\n"
+"QDockWidget::close-button, QDockWidget::float-button\n"
+"{"
+                        "\n"
+"    text-align: center;\n"
+"    spacing: 1px; /* spacing between items in the tool bar */\n"
+"    background-color: #505050;\n"
+"}\n"
+"QToolButton::checked\n"
+"{\n"
+"	border-style: solid;\n"
+"	border: 2px solid #008b8b;\n"
+"}\n"
+"\n"
+"QToolButton::hover\n"
+"{	\n"
+"	background: #414141;\n"
+"}\n"
+"\n"
+"QTabBar\n"
+"{\n"
+"	color: rgb(255,255,255);\n"
+"	background-color: #414141;\n"
+"}\n"
+"QPushButton::hover\n"
+"{\n"
+"	background: #008b8b;\n"
+"}\n"
+"\n"
+"QPushButton\n"
+"{\n"
+"	color: rgb(255,255,255);\n"
+"	background-color: #414141;\n"
+"}\n"
+"QPushButton::checked\n"
+"{\n"
+"    background-color: #008b8b;\n"
+"	border-style: solid;\n"
+"	border: 2px solid #ffffff;\n"
+"}\n"
+"QSpinBox\n"
+"{\n"
+"	color: #008b8b;\n"
+"}\n"
+"\n"
+""));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         verticalLayout = new QVBoxLayout(centralWidget);
@@ -216,8 +466,28 @@ public:
 
         listView = new QListView(centralWidget);
         listView->setObjectName(QStringLiteral("listView"));
+        listView->setSelectionMode(QAbstractItemView::MultiSelection);
 
         verticalLayout->addWidget(listView);
+
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setSpacing(6);
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer);
+
+        pbCopyToClipboard = new QPushButton(centralWidget);
+        pbCopyToClipboard->setObjectName(QStringLiteral("pbCopyToClipboard"));
+
+        horizontalLayout->addWidget(pbCopyToClipboard);
+
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_2);
+
+
+        verticalLayout->addLayout(horizontalLayout);
 
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
@@ -303,6 +573,7 @@ public:
 
         label_9->setText(QApplication::translate("MainWindow", "SNAT Pool:", nullptr));
         snatPool->setPlaceholderText(QApplication::translate("MainWindow", "<snat_pool>", nullptr));
+        pbCopyToClipboard->setText(QApplication::translate("MainWindow", "Copy to Clipboard", nullptr));
     } // retranslateUi
 
 };
